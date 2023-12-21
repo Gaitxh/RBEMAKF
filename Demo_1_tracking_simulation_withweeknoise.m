@@ -37,14 +37,6 @@ for Cycle_ii = 1 : Iteration
         time_spend(Method_flag(Method_ii),Cycle_ii)=T;
         fprintf(['Cycle Time %d, Method %s, Spend Time: %.2f s\n'],...
             Cycle_ii,Method_Label{Method_flag(Method_ii)},T);
-%         figure
-%         plot(sim.z(1,:),sim.z(2,:),'m','linewidth',1.5);
-%         hold on
-%         plot(sim.x(1,:),sim.x(2,:),'r','linewidth',2);
-%         hold on
-%         plot(res.x(1,:),res.x(2,:),'black--','linewidth',2);
-%         legend('noised','predefined','estimated');
-%         title(title_label{Method_ii})
     end
 end
 for Method_ii = 1:1:length(Method_flag)
@@ -57,18 +49,18 @@ final_mean(:,3) = mean(time_spend,2);%average spend time (second)
 
 
 colors = [
-    0.0863, 0.3137, 0.5451; % ÉîÀ¶ÂÌÉ«
-    0.1529, 0.5412, 0.4431; % ÉîÂÌÉ«
-    0.3765, 0.6235, 0.4824; % Ç³ÂÌÉ«
-    0.4980, 0.6863, 0.6157; % µ­À¶ÂÌÉ«
-    0.7922, 0.8118, 0.5882; % Ç³»ÆÂÌÉ«
-    0.9294, 0.6941, 0.1255; % ³ÈÉ«
-    0.9608, 0.4863, 0.2275; % ³ÈºìÉ«
-    0.7373, 0.1961, 0.1765; % ÉîºìÉ«
-    0.6627, 0.3294, 0.3137; % ¸üÉîºìÉ« (Í»³öÏÔÊ¾)
-    0.6157, 0.1725, 0.3216; % Éî×ÏÉ«
-    0.4667, 0.2588, 0.4314; % ×ÏÉ«
-    0.3216, 0.3216, 0.3216; % »ÒÉ«
+    0.0863, 0.3137, 0.5451; % æ·±è“ç»¿è‰²
+    0.1529, 0.5412, 0.4431; % æ·±ç»¿è‰²
+    0.3765, 0.6235, 0.4824; % æµ…ç»¿è‰²
+    0.4980, 0.6863, 0.6157; % æ·¡è“ç»¿è‰²
+    0.7922, 0.8118, 0.5882; % æµ…é»„ç»¿è‰²
+    0.9294, 0.6941, 0.1255; % æ©™è‰²
+    0.9608, 0.4863, 0.2275; % æ©™çº¢è‰²
+    0.7373, 0.1961, 0.1765; % æ·±çº¢è‰²
+    0.6627, 0.3294, 0.3137; % æ›´æ·±çº¢è‰² (çªå‡ºæ˜¾ç¤º)
+    0.6157, 0.1725, 0.3216; % æ·±ç´«è‰²
+    0.4667, 0.2588, 0.4314; % ç´«è‰²
+    0.3216, 0.3216, 0.3216; % ç°è‰²
 ];
 H1 = figure
 subplot(2,2,1)
@@ -88,8 +80,8 @@ end
 plot(mean_vel(8,:),'r','linewidth',2);
 title('RMSE vel')
 axis([1 200 4 10])
-width = 1000;  % 800 ÏñËØ¿í¶È
-height = 1000; % 600 ÏñËØ¸ß¶È
+width = 1000;  % 800 åƒç´ å®½åº¦
+height = 1000; % 600 åƒç´ é«˜åº¦
 set(H1, 'Position', [100, 100, width, height]);
 
 H1 = figure
@@ -108,6 +100,6 @@ for Method_ii = 1:1:7
 end
 plot(mean_vel(8,:),'r','linewidth',2);
 title('RMSE vel')
-width = 1000;  % 800 ÏñËØ¿í¶È
-height = 1000; % 600 ÏñËØ¸ß¶È
+width = 1000;  % 800 åƒç´ å®½åº¦
+height = 1000; % 600 åƒç´ é«˜åº¦
 set(H1, 'Position', [100, 100, width, height]);
