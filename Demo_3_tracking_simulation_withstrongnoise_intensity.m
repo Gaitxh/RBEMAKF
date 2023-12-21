@@ -42,14 +42,6 @@ for i = 1:length(frequency)
             time_spend(Method_flag(Method_ii),Cycle_ii)=T;
             fprintf(['%d,Cycle Time %d, Method %s, Spend Time: %.2f s\n'],...
                 i,Cycle_ii,Method_Label{Method_flag(Method_ii)},T);
-            %         figure
-            %         plot(sim.z(1,:),sim.z(2,:),'m','linewidth',1.5);
-            %         hold on
-            %         plot(sim.x(1,:),sim.x(2,:),'r','linewidth',2);
-            %         hold on
-            %         plot(res.x(1,:),res.x(2,:),'black--','linewidth',2);
-            %         legend('noised','predefined','estimated');
-            %         title(title_label{Method_ii})
         end
     end
     for Method_ii = 1:1:length(Method_flag)
