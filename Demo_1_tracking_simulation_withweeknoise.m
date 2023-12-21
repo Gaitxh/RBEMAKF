@@ -10,7 +10,7 @@ for title_i = 1:length(Method_flag)
     title_label{title_i} = Method_Label{Method_flag(title_i)};
 end
 title_label{end+1} = 'Predefine';
-Iteration = 1000;
+Iteration = 100;
 sim.length = 200;%% the length of time series
 %% the parameters that prefined for simulation data generation
 sim.n = 2;sim.m = 4;%% defined the dismension of the dynamic system
