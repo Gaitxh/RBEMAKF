@@ -1,11 +1,11 @@
 clc;
 clear all;
-% close all;
+close all;
 warning off
 addpath(genpath(pwd))
 % Method_flag = setdiff([1:15],[9,11,12,14]);
-Method_flag = [1:8];
-Method_Label = {'trueKF','RCKF','VBAKF','UPAKF','SBAKF','EMAKF','SKF','RBEMAKF'};
+Method_flag = [1:9];
+Method_Label = {'trueKF','RCKF','VBAKF','UPAKF','SBAKF','EMKF','SKF','MSTVBAKF','BAKF'};
 for title_i = 1:length(Method_flag)
     title_label{title_i} = Method_Label{Method_flag(title_i)};
 end
@@ -43,63 +43,6 @@ for Method_ii = 1:1:length(Method_flag)
     mean_pos(Method_flag(Method_ii),:)=sqrt(mean(pos{Method_flag(Method_ii)}));
     mean_vel(Method_flag(Method_ii),:)=sqrt(mean(vel{Method_flag(Method_ii)}));
 end
-final_mean(:,1) = mean(mean_pos,2);%ARMSE pos
-final_mean(:,2) = mean(mean_vel,2);%ARMSE vel
-final_mean(:,3) = mean(time_spend,2);%average spend time (second)
-
-
-colors = [
-    0.0863, 0.3137, 0.5451; % 深蓝绿色
-    0.1529, 0.5412, 0.4431; % 深绿色
-    0.3765, 0.6235, 0.4824; % 浅绿色
-    0.4980, 0.6863, 0.6157; % 淡蓝绿色
-    0.7922, 0.8118, 0.5882; % 浅黄绿色
-    0.9294, 0.6941, 0.1255; % 橙色
-    0.9608, 0.4863, 0.2275; % 橙红色
-    0.7373, 0.1961, 0.1765; % 深红色
-    0.6627, 0.3294, 0.3137; % 更深红色 (突出显示)
-    0.6157, 0.1725, 0.3216; % 深紫色
-    0.4667, 0.2588, 0.4314; % 紫色
-    0.3216, 0.3216, 0.3216; % 灰色
-];
-H1 = figure
-subplot(2,2,1)
-for Method_ii = 1:1:7
-    plot(mean_pos(Method_flag(Method_ii),:),'Color', colors(Method_ii, :),'linewidth',2);
-    hold on
-end
-plot(mean_pos(8,:),'r','linewidth',2);
-legend(title_label);
-title('RMSE pos')
-axis([1 200 2.5 7])
-subplot(2,2,3)
-for Method_ii = 1:1:7
-    plot(mean_vel(Method_flag(Method_ii),:),'Color', colors(Method_ii, :),'linewidth',2);
-    hold on
-end
-plot(mean_vel(8,:),'r','linewidth',2);
-title('RMSE vel')
-axis([1 200 4 10])
-width = 1000;  % 800 像素宽度
-height = 1000; % 600 像素高度
-set(H1, 'Position', [100, 100, width, height]);
-
-H1 = figure
-subplot(6,2,1)
-for Method_ii = 1:1:7
-    plot(mean_pos(Method_flag(Method_ii),:),'Color', colors(Method_ii, :),'linewidth',2);
-    hold on
-end
-plot(mean_pos(8,:),'r','linewidth',2);
-legend(title_label);
-title('RMSE pos')
-subplot(6,2,3)
-for Method_ii = 1:1:7
-    plot(mean_vel(Method_flag(Method_ii),:),'Color', colors(Method_ii, :),'linewidth',2);
-    hold on
-end
-plot(mean_vel(8,:),'r','linewidth',2);
-title('RMSE vel')
-width = 1000;  % 800 像素宽度
-height = 1000; % 600 像素高度
-set(H1, 'Position', [100, 100, width, height]);
+final_mean(:,1) = mean(mean_pos,2);
+final_mean(:,2) = mean(mean_vel,2);
+final_mean(:,3) = mean(time_spend,2);
