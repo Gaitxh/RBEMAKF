@@ -5,12 +5,12 @@ warning off
 addpath(genpath(pwd))
 % Method_flag = setdiff([1:15],[9,11,12,14]);
 Method_flag = [1:9];
-Method_Label = {'trueKF','RSTKF','GSTMKF','NVGMNGHVGMKF','SSMKF','AORKF','MLKF', 'LRBEMAKF','STRBEMAKF'};
+Method_Label = {'trueKF','RSTKF','GSTMKF','NVGMNGHVGMKF','SSMKF','AORKF','MLKF', 'LEAKF','StuBAKF'};
 for title_i = 1:length(Method_flag)
     title_label{title_i} = Method_Label{Method_flag(title_i)};
 end
 title_label{end+1} = 'Predefine';
-Iteration = 100;
+Iteration = 1000;
 sim.length = 200;%% the length of time series
 %% the parameters that prefined for simulation data generation
 sim.n = 2;sim.m = 4;%% defined the dismension of the dynamic system
@@ -48,7 +48,7 @@ for i = 1:length(frequency)
         mean_pos{i}(Method_flag(Method_ii),:)=sqrt(mean(pos{Method_flag(Method_ii)}));
         mean_vel{i}(Method_flag(Method_ii),:)=sqrt(mean(vel{Method_flag(Method_ii)}));
     end
-    final_mean_pos(:,i) = mean(mean_pos{i},2);%ARMSE pos
-    final_mean_vel(:,i) = mean(mean_vel{i},2);%ARMSE vel
-    final_mean_time(:,i) = mean(time_spend,2);%average spend time (second)
-end
+    final_mean_pos(:,i) = mean(mean_pos{i},2);
+    final_mean_vel(:,i) = mean(mean_vel{i},2);
+    final_mean_time(:,i) = mean(time_spend,2);
+save('demo3.mat');
