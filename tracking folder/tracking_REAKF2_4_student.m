@@ -33,20 +33,12 @@ for i = 2:30
     Pwk = Qk-Qk*Hk'/(Hk*Qk*Hk'+inv(Omiga))*Hk*Qk;
     Ewk = Pwk*Hk'*Omiga*y__k;
     q = (Ewk.^2+diag(Pwk)+vq-2)./(vq+3);
-%     vq = 1./(sum(log(q)+1./q)-4)+2;
-%     if vq< 2
-%         vq = 2;
-%     end
     Qk = diag(q);    
     wk = Ewk;
     
     Pvk = Rk-Rk'/(H+Rk)*Rk;
     Evk = Pvk*inv_H*(y__k-Hk*wk);
     r = (Evk.^2+diag(Pvk)+vr-2)./(vr+3);
-%     vr = 1./(sum(log(r)+1./r)-2)+2; 
-%     if vr < 2
-%         vr = 2;
-%     end
     Rk = diag(r);
     vk = Evk;
     
